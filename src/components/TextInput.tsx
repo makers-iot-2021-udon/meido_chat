@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             display: 'flex',
             flexWrap: 'wrap',
+            backgroundColor:'#fcfcfc',
         },
         textField: {
             marginLeft: theme.spacing(1),
@@ -46,9 +47,14 @@ export const TextInput: React.FC<Props> = props => {
                     shrink: true
                 }}
                 InputProps={{
-                    style: {fontSize: 32},
+                    style: {
+                        fontSize: 32
+                    },
                 }}
                 variant="outlined"
+                color="secondary"
+                value={props.inputValue}
+
                 onChange={e => {
                     props.onChangeValue(e.target.value)
                     dispatch(messageSlice.actions.updateInputMessage(e.target.value))

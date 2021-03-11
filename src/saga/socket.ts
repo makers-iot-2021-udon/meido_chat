@@ -41,6 +41,19 @@ function subscribe(socket: WebSocket) {
                 //console.log(jsonObj)
 
                 switch (jsonObj.action) {
+                    case "LOVE_MESSAGE": {
+                        const stringArray: string[] = jsonObj.messages
+                        let message = ""
+                        stringArray.forEach((str: string, index: number) => {
+                            if (index === 0)
+                                message += str
+                            else
+                                message += '\n' + str
+                        })
+                        console.log("Debug: ", message)
+                        emit(messageSlice.actions.loveMessage(message))
+                    }
+                        break;
                     case "POST_MESSAGE": {
                         let laneNum = LaneManager.getNextLaneNumber()
                         //console.log("Recieved message!\nNext Lane Num is ", laneNum)
