@@ -9,7 +9,7 @@ const SPACING_MAX = 288
 //ユーザーが発破したメッセージ
 export type MessageState = {
     userMessage: string;
-    loveMessage: string;
+    loveMessage: string[][];
     inputMessage: string;
     //ここから頭が悪いので要注意
     laneMessage1: string[];
@@ -40,7 +40,7 @@ function generateInitState(initMessage: string, num: number): string[] {
 export const initialState: MessageState = {
     userMessage: "Test message",
     inputMessage: "",
-    loveMessage: "",
+    loveMessage: [],
     laneMessage1: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage2: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage3: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
@@ -59,9 +59,13 @@ const messageSlice = createSlice({
         postMessage: (state, action: PayloadAction<string>) => ({
             ...state, userMessage: action.payload
         }),
-        loveMessage: (state, action: PayloadAction<string>) => ({
+        loveMessage: (state, action: PayloadAction<string[]>) => ({
             ...state,
-            loveMessage: action.payload
+            loveMessage: state.loveMessage[0] === [""] ? [action.payload] : [...state.loveMessage, action.payload],
+        }),
+        deleteLoveMessage: (state,action:PayloadAction) => ({
+            ...state,
+            loveMessage: state.loveMessage.slice(2)
         }),
         laneMessage1: (state, action: PayloadAction<string>) => ({
             ...state,

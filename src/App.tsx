@@ -9,6 +9,7 @@ import utilStyles from "./styles/util.module.scss"
 import {useDispatch, useSelector} from "react-redux";
 import {sendMessage} from "./redux/socket/action";
 import {MessageState} from "./redux/chat/slice";
+import {PopupMenu} from "./components/PopupMenu";
 
 function App() {
     const {name, image} = useLiffInfo();
@@ -26,7 +27,7 @@ function App() {
                 <h1 className={utilStyles.headingLg}>{name}</h1>
             </header>
 
-
+            <PopupMenu loveMessage={messageState.loveMessage}></PopupMenu>
             <TextInput inputValue={messageState.inputMessage}
                        onInputEnter={(message: string) => {
 

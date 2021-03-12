@@ -48,10 +48,11 @@ function subscribe(socket: WebSocket) {
                             if (index === 0)
                                 message += str
                             else
-                                message += '\n' + str
+                                message += `<br> + <p>${str}</p>`
                         })
                         console.log("Debug: ", message)
-                        emit(messageSlice.actions.loveMessage(message))
+                        console.log(stringArray)
+                        emit(messageSlice.actions.loveMessage(stringArray))
                     }
                         break;
                     case "POST_MESSAGE": {

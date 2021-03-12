@@ -1,0 +1,31 @@
+.popup-menu-container {
+  position: absolute;
+  top: 30%;
+  left: 44%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.popup-menu {
+  position: absolute;
+  z-index: 2;
+  font-size: 18pt;
+  font-weight: bolder;
+  //margin-left: 45%;
+  min-width: 32rem;
+  width: auto;
+  text-align: left;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  transform: scale(0);
+  transform-origin: top left;
+  transition: transform 0.2s;
+
+  &.shown {
+    transform: scale(1);
+  }
+}
+
