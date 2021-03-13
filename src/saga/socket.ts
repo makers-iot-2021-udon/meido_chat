@@ -53,6 +53,7 @@ function subscribe(socket: WebSocket) {
                         console.log("Debug: ", message)
                         console.log(stringArray)
                         emit(messageSlice.actions.loveMessage(stringArray))
+                        emit(messageSlice.actions.notifyUpdateMessage(true))
                     }
                         break;
                     case "POST_MESSAGE": {

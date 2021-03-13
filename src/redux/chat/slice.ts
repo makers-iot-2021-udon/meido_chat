@@ -11,6 +11,7 @@ export type MessageState = {
     userMessage: string;
     loveMessage: string[][];
     inputMessage: string;
+    updateFlag: boolean;
     //ここから頭が悪いので要注意
     laneMessage1: string[];
     laneMessage2: string[];
@@ -40,7 +41,8 @@ function generateInitState(initMessage: string, num: number): string[] {
 export const initialState: MessageState = {
     userMessage: "Test message",
     inputMessage: "",
-    loveMessage: [],
+    updateFlag: false,
+    loveMessage: [[""], [""], [""]],
     laneMessage1: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage2: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage3: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
@@ -61,9 +63,13 @@ const messageSlice = createSlice({
         }),
         loveMessage: (state, action: PayloadAction<string[]>) => ({
             ...state,
-            loveMessage: state.loveMessage[0] === [""] ? [action.payload] : [...state.loveMessage, action.payload],
+            loveMessage: state.loveMessage[0][0] === "" ? [action.payload] : [...state.loveMessage, action.payload],
         }),
-        deleteLoveMessage: (state,action:PayloadAction) => ({
+        notifyUpdateMessage: (state, action: PayloadAction<boolean>) => ({
+            ...state,
+            updateFlag: action.payload
+        }),
+        deleteLoveMessage: (state, action: PayloadAction) => ({
             ...state,
             loveMessage: state.loveMessage.slice(2)
         }),

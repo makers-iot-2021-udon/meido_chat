@@ -5,8 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import messageSlice, {MessageState} from "../redux/chat/slice";
 
 interface OwnProps {
-    loveMessage: string[][]
-    // flag: boolean
+    loveMessage: string[][],
+    flag: boolean
 }
 
 type Props = OwnProps
@@ -16,34 +16,42 @@ type Props = OwnProps
 export const PopupMenu: React.FC<Props> = props => {
     const dispatch = useDispatch();
 
-    const [isShown, setIsShown] = useState(true)
+    const [isShown, setIsShown] = useState(false)
     // const messageState = useSelector((state: { messageState: MessageState }) => state).messageState
 
-    const handleToggleButtonClick = () => {
-        setIsShown(true)
+    // //アニメーションフラグを折る
+    // window.setTimeout(function () {
+    //     dispatch(messageSlice.actions.notifyUpdateMessage(false))
+    //
+    // }, 5000)
+
+    if (props.flag && props.loveMessage.length !== 0) {
+        // dispatch(messageSlice.actions.notifyUpdateMessage(false))
+
+        // window.setTimeout(function () {
+        //     dispatch(messageSlice.actions.notifyUpdateMessage(false))
+        //
+        // }, 5000)
     }
-
-    const handleCloseButtonClick = () => {
-        setIsShown(false)
-    }
-
-    //5秒後にステートを書き変えて強制的に0にする
-    if (props.loveMessage.length !== 0) {
-
-        window.setTimeout(function () {
-            // dispatch(messageSlice.actions.loveMessage([""]))
-        }, 5000);
-    }
-
-    return (
-        <div className="popup-menu-container">
-            <div className={`popup-menu ${props.loveMessage.length !== 0 ? 'shown' : ''}`}>
-                {props.loveMessage[0].map((str, index) => {
-                    return <p>{str}</p>
-                })}
-
+    // if (props.loveMessage[0][0].length > 0 && props.loveMessage.length > 1) {
+        return (
+            <div className="popup-menu-container">
+                <div
+                    className={`popup-menu ${props.flag&&props.loveMessage[0][0].length > 0 && props.loveMessage.length > 1 ? 'shown' : ''}`}>
+                    {
+                        props.loveMessage.shift()!.map((str, index) => {
+                            return <div>{str}</div>
+                        })
+                    }
+                </div>
             </div>
-        </div>
-    )
+        )
+    // } else return (
+    //     <div className="popup-menu-container">
+    //
+    //     </div>
+    //
+    // )
 }
+
 

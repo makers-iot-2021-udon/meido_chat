@@ -27,7 +27,7 @@ function App() {
                 <h1 className={utilStyles.headingLg}>{name}</h1>
             </header>
 
-            <PopupMenu loveMessage={messageState.loveMessage}></PopupMenu>
+            <PopupMenu loveMessage={messageState.loveMessage} flag={messageState.updateFlag}></PopupMenu>
             <TextInput inputValue={messageState.inputMessage}
                        onInputEnter={(message: string) => {
 
