@@ -52,8 +52,10 @@ function subscribe(socket: WebSocket) {
                         })
                         console.log("Debug: ", message)
                         console.log(stringArray)
-                        emit(messageSlice.actions.loveMessage(stringArray))
-                        emit(messageSlice.actions.notifyUpdateMessage(true))
+                        //最新データを追加
+                        emit(messageSlice.actions.loveMessages(stringArray))
+                        emit(messageSlice.actions.loveMessage(""))
+                        // emit(messageSlice.actions.notifyUpdateMessage(true))
                     }
                         break;
                     case "POST_MESSAGE": {

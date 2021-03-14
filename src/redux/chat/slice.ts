@@ -9,7 +9,8 @@ const SPACING_MAX = 288
 //ユーザーが発破したメッセージ
 export type MessageState = {
     userMessage: string;
-    loveMessage: string[][];
+    loveMessages: string[][];
+    loveMessage: string[];
     inputMessage: string;
     updateFlag: boolean;
     //ここから頭が悪いので要注意
@@ -42,7 +43,8 @@ export const initialState: MessageState = {
     userMessage: "Test message",
     inputMessage: "",
     updateFlag: false,
-    loveMessage: [[""], [""], [""]],
+    loveMessage: [""],
+    loveMessages: [["hoge", "Hoge"], ["hoge", "Hoge"], ["hoge", "Hoge"]],
     laneMessage1: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage2: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage3: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
@@ -61,15 +63,18 @@ const messageSlice = createSlice({
         postMessage: (state, action: PayloadAction<string>) => ({
             ...state, userMessage: action.payload
         }),
-        loveMessage: (state, action: PayloadAction<string[]>) => ({
+        loveMessage: (state, action: PayloadAction<string>) => ({
+            ...state, loveMessage: state.loveMessages[0]
+        }),
+        loveMessages: (state, action: PayloadAction<string[]>) => ({
             ...state,
-            loveMessage: state.loveMessage[0][0] === "" ? [action.payload] : [...state.loveMessage, action.payload],
+            loveMessages: [...state.loveMessages.slice(2), action.payload],
         }),
         notifyUpdateMessage: (state, action: PayloadAction<boolean>) => ({
             ...state,
             updateFlag: action.payload
         }),
-        deleteLoveMessage: (state, action: PayloadAction) => ({
+        deleteLoveMessage: (state, action: PayloadAction<string>) => ({
             ...state,
             loveMessage: state.loveMessage.slice(2)
         }),
