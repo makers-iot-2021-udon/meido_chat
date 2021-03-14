@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {evilSpacing, LANE_NUM} from "../../Constants";
+import {evilSpacing} from "../../Constants";
 
 const LimitNum = 8
 const SPACING_MIN = 196
@@ -44,7 +44,7 @@ export const initialState: MessageState = {
     inputMessage: "",
     updateFlag: false,
     loveMessage: [""],
-    loveMessages: [["hoge", "Hoge"], ["hoge", "Hoge"], ["hoge", "Hoge"]],
+    loveMessages: [[""], [""], [""], [""]],
     laneMessage1: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage2: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage3: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),

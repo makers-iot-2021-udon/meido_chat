@@ -1,9 +1,8 @@
 // PopupMenu.js
 import './PopupMenu.scss'
-import React, {useState} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import messageSlice, {MessageState} from "../redux/chat/slice";
-import {LANE_NUM} from "../Constants";
 
 interface OwnProps {
     loveMessage: string[][],
@@ -19,7 +18,6 @@ export const PopupMenu: React.FC<Props> = props => {
     //アニメーションフラグを折る
     let showFlag = false
     if (props.flag) {
-        console.log("TEST")
         showFlag = true
         window.setTimeout(function () {
             dispatch(messageSlice.actions.notifyUpdateMessage(false))
@@ -28,7 +26,7 @@ export const PopupMenu: React.FC<Props> = props => {
         showFlag = false
         window.setTimeout(function () {
             dispatch(messageSlice.actions.notifyUpdateMessage(true))
-        }, 2000)
+        }, 5000)
     }
 
 
@@ -50,7 +48,7 @@ export const PopupMenu: React.FC<Props> = props => {
     return (
         <div className="popup-menu-container">
             <div
-                className={`popup-menu ${showFlag ? 'shown' : ''}`}>
+                className={`popup-menu ${showFlag && messageState.loveMessage[0].length > 0 ? 'shown' : ''}`}>
                 {
                     messageState.loveMessage.map((str, index) => {
                         return <div>{str}</div>
