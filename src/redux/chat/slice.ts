@@ -11,6 +11,7 @@ export type MessageState = {
     userMessage: string;
     loveMessages: string[][];
     loveMessage: string[];
+    progressPoint: number;
     inputMessage: string;
     updateFlag: boolean;
     //ここから頭が悪いので要注意
@@ -43,8 +44,9 @@ export const initialState: MessageState = {
     userMessage: "Test message",
     inputMessage: "",
     updateFlag: false,
+    progressPoint: 1,
     loveMessage: [""],
-    loveMessages: [[""], [""], [""], [""]],
+    loveMessages: [[""]],
     laneMessage1: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage2: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
     laneMessage3: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
@@ -69,6 +71,9 @@ const messageSlice = createSlice({
         loveMessages: (state, action: PayloadAction<string[]>) => ({
             ...state,
             loveMessages: [...state.loveMessages.slice(2), action.payload],
+        }),
+        progressPoint: (state, action: PayloadAction<number>) => ({
+            ...state, progressPoint: state.progressPoint += action.payload
         }),
         notifyUpdateMessage: (state, action: PayloadAction<boolean>) => ({
             ...state,

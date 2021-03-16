@@ -29,7 +29,6 @@ export const PopupMenu: React.FC<Props> = props => {
         }, 5000)
     }
 
-
     //フラグが折れているときは先頭データを取得してアクションをDispatch
     // else {
     //     dispatch(messageSlice.actions.deleteLoveMessage())
@@ -45,6 +44,7 @@ export const PopupMenu: React.FC<Props> = props => {
     //     // }, 5000)
     // }
     // if (messageState.loveMessage[0][0].length > 0 && messageState.loveMessage.length > 1) {
+
     return (
         <div className="popup-menu-container">
             <div

@@ -9,7 +9,6 @@ import "./createStore";
 import {Provider} from "react-redux";
 import createStore from "./createStore";
 
-
 type LiffInfoContextValue = {
     loggedIn: boolean;
     name: string;

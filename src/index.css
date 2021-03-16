@@ -1,8 +1,9 @@
 html {
     height: 100vh;
-    background-image:url("./background.png");
+    background-image:url("./background4.PNG");
 
 }
+
 
 
 body {
@@ -13,7 +14,6 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
 }
 
 code {

@@ -9,7 +9,7 @@ aaaaa.container {
   font-size: 1rem;
   color: #f3f3f3;
   background-color: #2171B7;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -21,8 +21,10 @@ aaaaa.container {
 .headerHomeImage {
   width: 5rem;
   height: 5rem;
+  padding:5pt;
   border-radius: 50%; /* 角丸半径を50%にする(=円形にする) */
   background-position: center center;
+  margin-right: 16pt;
   display: inline-block; /* 複数の画像を横に並べたい場合 */
 
 }
