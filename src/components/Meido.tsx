@@ -12,7 +12,7 @@ export class Meido extends React.Component<Props> {
     render() {
         return (
             <React.Fragment>
-                <img src={MeidoImage} className={"Meido"}></img>
+                {/*<img src={MeidoImage} className={"Meido"}></img>*/}
 
             </React.Fragment>
         )

@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {evilSpacing} from "../../Constants";
+import {adjustValue, evilSpacing} from "../../Constants";
 
 const LimitNum = 8
 const SPACING_MIN = 196
@@ -44,7 +44,7 @@ export const initialState: MessageState = {
     userMessage: "Test message",
     inputMessage: "",
     updateFlag: false,
-    progressPoint: 1,
+    progressPoint: 0,
     loveMessage: [""],
     loveMessages: [[""]],
     laneMessage1: generateInitState("" + evilSpacing(calcRandomSpacing(SPACING_MIN, SPACING_MAX)), LimitNum),
@@ -73,7 +73,10 @@ const messageSlice = createSlice({
             loveMessages: [...state.loveMessages.slice(2), action.payload],
         }),
         progressPoint: (state, action: PayloadAction<number>) => ({
-            ...state, progressPoint: state.progressPoint += action.payload
+            ...state, progressPoint: state.progressPoint + action.payload * adjustValue < 0 ? 0 : state.progressPoint + action.payload * adjustValue
+            // ...state, progressPoint: action.payload
+
+
         }),
         notifyUpdateMessage: (state, action: PayloadAction<boolean>) => ({
             ...state,

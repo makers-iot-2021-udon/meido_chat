@@ -51,10 +51,12 @@ function subscribe(socket: WebSocket) {
                                 message += `<br> + <p>${str}</p>`
                         })
                         console.log("Debug: ", message)
-                        console.log(stringArray)
+                        console.log("Score: ",jsonObj.score)
+                        //console.log(stringArray)
                         //最新データを追加
                         emit(messageSlice.actions.loveMessages(stringArray))
                         emit(messageSlice.actions.loveMessage(""))
+                        emit(messageSlice.actions.progressPoint(jsonObj.score))
                         // emit(messageSlice.actions.notifyUpdateMessage(true))
                     }
                         break;

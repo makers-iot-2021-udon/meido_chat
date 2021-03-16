@@ -36,9 +36,9 @@ function App() {
                 <PopupMenu loveMessage={[]} flag={messageState.updateFlag}></PopupMenu>
 
             </div>
-
+            {/*<h1>{messageState.progressPoint}</h1>*/}
             {(() => {
-                return messageState.progressPoint >= 1000 ?
+                return messageState.progressPoint >= 100 ?
                     <AnimationText textArray={["たくさんプレイしてくれてありがとう！！ I Love you! by あなたの推しのメイドちゃんより"]}/> : <div></div>
 
             })()}

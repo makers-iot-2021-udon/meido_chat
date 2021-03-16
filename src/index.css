@@ -1,10 +1,8 @@
 html {
     height: 100vh;
-    background-image:url("./background4.PNG");
-
+    background-image:url("./background_with_1.png");
+    background-size: cover;
 }
-
-
 
 body {
     margin: 0;
