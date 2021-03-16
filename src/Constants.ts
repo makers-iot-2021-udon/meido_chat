@@ -9,4 +9,4 @@ export const evilSpacing = (num: number): string => {
 }
 export const myLiffId = process.env.REACT_APP_LIFF_ID || "";
 export const dummyIcon = '/dummyicon.svg';
-export const adjustValue = 0.2;
+export const adjustValue = 0.3;
