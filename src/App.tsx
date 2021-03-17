@@ -72,7 +72,7 @@ function App() {
                            onInputEnter={(message: string) => {
 
                                //console.log("Lane num: ", laneNum)
-                               dispatch(sendMessage(`{"action":"LOVE_MESSAGE","message":"${messageState.inputMessage}"}`))
+                               dispatch(sendMessage(`{"action":"LOVE_MESSAGE2","message":"${messageState.inputMessage}"}`))
 
                            }}
                            onChangeValue={() => {
